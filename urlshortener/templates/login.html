@@ -1,0 +1,13 @@
+{% extends "base_layout.html" %}
+
+{% load django_bootstrap5 %}
+
+{% block content %}
+
+<h1 class="my-4">Log In</h1>
+<form action="{% url 'homepage' %}" method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input class="btn" style="background-color: #a07add; color: white" type="submit" value="Sign In">
+</form>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% load django_bootstrap5 %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>URL Shortener</title>
+    {% bootstrap_css %}
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ms-3">
+      <a class="navbar-brand" href="{% url 'homepage' %}">Homepage</a>
+      <button class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse" id="navbarToggleExternalContent">
+
+        {% if user.is_authenticated %}
+
+        {% else %}
+
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'homepage' %}">Log In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'sign_up' %}">Sign Up</a>
+          </li>
+        </ul>
+
+        {% endif %}        
+
+      </div>
+    </nav>
+
+  <main class="container wrapper flex-grow-1">
+    {% if messages %}
+      {% bootstrap_messages %}
+    {% endif %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+    <footer>
+      <div class="container my-5 pt-4 border-top">
+        <a target="_blank" style="color: #64419e" href="https://github.com/Mirrasol">Get more projects from H. Dobruk</a>
+      </div>
+    </footer>
+  </body>
+</html>
