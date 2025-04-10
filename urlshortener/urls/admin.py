@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from urlshortener.urls.models import URL
+
+admin.site.register(URL)
