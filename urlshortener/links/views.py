@@ -1,32 +1,32 @@
-from django.contrib import messages
-from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import redirect, render
+# from django.contrib import messages
+# from django.contrib.auth import login
+# from django.contrib.auth.forms import UserCreationForm
+# from django.shortcuts import redirect, render
 
 
-def register_user(request):
-    if request.user.is_authenticated:
-        return redirect("homepage")
+# def register_user(request):
+#     if request.user.is_authenticated:
+#         return redirect("homepage")
     
-    elif request.method == "POST":
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request=request, user=user)
-            messages.success(request, 'Registration Successful!')
-            return redirect("homepage")
-        return render(
-            request=request,
-            template_name='links/sign_up.html',
-            context={"form": form},
-            status=403,
-        )
+#     elif request.method == "POST":
+#         form = UserCreationForm(request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             login(request=request, user=user)
+#             messages.success(request, 'Registration Successful!')
+#             return redirect("homepage")
+#         return render(
+#             request=request,
+#             template_name='links/sign_up.html',
+#             context={"form": form},
+#             status=403,
+#         )
 
-    return render(
-        request=request,
-        template_name='links/sign_up.html',
-        context={'form': UserCreationForm()},
-    )
+#     return render(
+#         request=request,
+#         template_name='links/sign_up.html',
+#         context={'form': UserCreationForm()},
+#     )
 
 # def login_user(request):
 #     if request.user.is_authenticated:
