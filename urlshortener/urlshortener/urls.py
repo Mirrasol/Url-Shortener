@@ -26,6 +26,6 @@ urlpatterns = [
     path('login/', CustomLoginView.as_view(), name='login'),
     path('logout/', CustomLogoutView.as_view(), name='logout'),
     path('sign_up/', CustomUserCreateView.as_view(), name='sign_up'),
-    path('links/', include('links.urls'), name='links'),
+    path('urls/', include('links.urls')),
     path('admin/', admin.site.urls),
 ]
