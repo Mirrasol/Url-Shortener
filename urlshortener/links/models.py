@@ -1,6 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 
+from .utils import get_hash
+
 User = get_user_model()
 
 
@@ -12,4 +14,15 @@ class URL(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Created at')
 
     def __str__(self):
-        return f'{self.url} - {self.hash}'
+        return f'{self.url} | {self.hash}'
+    
+    def __get_url_hash(self):
+        hash = get_hash(url=self.url)
+        while URL.objects.filter(hash=hash).exists():
+            hash = get_hash(url=self.url)
+        return hash
+        
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.hash = self.__get_url_hash()
+        return super().save(*args, **kwargs)
