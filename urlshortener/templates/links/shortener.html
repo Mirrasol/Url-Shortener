@@ -1,0 +1,18 @@
+{% extends "base_layout.html" %}
+
+{% load django_bootstrap5 %}
+
+{% block content %}
+
+<h1 class="my-4">Shorten your URL:</h1>
+<form action="{% url 'shorten_url' %}" method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input class="btn" style="background-color: #a07add; color: white" type="submit" value="Submit">
+</form>
+
+<div class="container my-5 pt-4 border-top">
+    <h3>Your latest shortened URL:</h3>
+    <a href="{% url 'redirect_url' url.hash %}" target="_blank">{{ url.hash }}</a>
+</div>
+{% endblock %}

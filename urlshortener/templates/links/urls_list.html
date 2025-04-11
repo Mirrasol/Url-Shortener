@@ -1,0 +1,34 @@
+{% extends "base_layout.html" %}
+
+{% load django_bootstrap5 %}
+
+{% block content %}
+    <h1 class="my-4">Saved URLs</h1>
+    <a class="btn mb-3" style="background-color: #a07add; color: white" href="{% url 'shorten_url' %}">Shorten another URL</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th>ID</th>
+              <th>Long URL</th>
+              <th>Short URL</th>
+              <th>Visited</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for url in urls %}
+            <tr>
+                <td>{{ url.id }}</td>
+                <td>
+                    <a class="d-inline-block link text-truncate" style="color: #64419e; max-width: 350px;" href="{{ url.url }}">{{ url.url }}
+                </td>
+                <td>
+                    <a class="link" style="color: #64419e;" href="{% url 'redirect_url' url.hash %}">{{ url.hash }}</a>
+                </td>
+                <td>{{ url.visits_count }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+{% endblock %}
