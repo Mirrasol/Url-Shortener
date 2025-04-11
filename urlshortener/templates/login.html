@@ -5,7 +5,7 @@
 {% block content %}
 
 <h1 class="my-4">Log In</h1>
-<form action="{% url 'homepage' %}" method="post">
+<form action="{% url 'login' %}" method="post">
     {% csrf_token %}
     {% bootstrap_form form %}
     <input class="btn" style="background-color: #a07add; color: white" type="submit" value="Sign In">

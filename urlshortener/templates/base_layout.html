@@ -18,19 +18,32 @@
 
         {% if user.is_authenticated %}
 
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'homepage' %}">URLs Index</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav">
+          <form action="{% url 'logout' %}" method="post">
+              {% csrf_token %}
+              <input class="btn nav-link" type="submit" value="Log Out">
+          </form>
+        </ul>    
+
         {% else %}
 
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'homepage' %}">Log In</a>
+            <a class="nav-link" href="{% url 'login' %}">Log In</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'sign_up' %}">Sign Up</a>
           </li>
         </ul>
 
-        {% endif %}        
-
+        {% endif %}
+        
       </div>
     </nav>
 
