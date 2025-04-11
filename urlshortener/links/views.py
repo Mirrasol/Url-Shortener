@@ -33,7 +33,7 @@ def register_user(request):
 #         return redirect("homepage")
 #    
 #     elif request.method == "POST":
-#         form = AuthenticationForm(request.POST)
+#         form = AuthenticationForm(request, request.POST)
 #         if form.is_valid():
 #             username = form.cleaned_data.get('username')
 #             password = form.cleaned_data.get('password')
