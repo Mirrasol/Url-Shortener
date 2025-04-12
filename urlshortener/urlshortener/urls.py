@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import include, path
 
 # from urlshortener.views import homepage
+from urlshortener.api.routers import router
+from urlshortener.api import router
 from urlshortener.views import CustomLoginView, CustomLogoutView, CustomUserCreateView, Homepage
 
 urlpatterns = [
@@ -27,5 +29,6 @@ urlpatterns = [
     path('logout/', CustomLogoutView.as_view(), name='logout'),
     path('sign_up/', CustomUserCreateView.as_view(), name='sign_up'),
     path('urls/', include('links.urls')),
+    path('api/v1/', include(router.urls)),
     path('admin/', admin.site.urls),
 ]

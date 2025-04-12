@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_bootstrap5',
     'links',
+    'api',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +135,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'homepage'
 LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = 'homepage'
+
+
+# DRF specific settings.
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+}
