@@ -4,12 +4,18 @@ from rest_framework import serializers
 
 
 class URLSerializer(serializers.ModelSerializer):
+    """
+    Serializer for URLs.
+    """
     class Meta:
         model = URL
         fields = ['url', 'hash', 'visits_count']
 
 
 class UsersSerializer(serializers.ModelSerializer):
+    """
+    Serializer for users.
+    """
     class Meta:
         model = get_user_model()
         fields = ['username', 'date_joined', 'last_login']
