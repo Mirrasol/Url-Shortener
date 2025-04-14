@@ -17,17 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-# from urlshortener.views import homepage
-from urlshortener.api.routers import router
 from urlshortener.views import CustomLoginView, CustomLogoutView, CustomUserCreateView, Homepage
 
 urlpatterns = [
-    # path('', homepage, name='homepage'),
     path('', Homepage.as_view(), name='homepage'),
     path('login/', CustomLoginView.as_view(), name='login'),
     path('logout/', CustomLogoutView.as_view(), name='logout'),
     path('sign_up/', CustomUserCreateView.as_view(), name='sign_up'),
     path('urls/', include('links.urls')),
-    path('api/v1/', include(router.urls)),
+    path('api/v1/urls/', include('api.routers')),
     path('admin/', admin.site.urls),
 ]
