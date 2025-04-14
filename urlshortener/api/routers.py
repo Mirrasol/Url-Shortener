@@ -1,8 +1,9 @@
 from api import views
 from django.urls import path
-from rest_framework import routers
 
-router = routers.DefaultRouter()
+# from rest_framework import routers
+
+# router = routers.DefaultRouter()
 
 urlpatterns = [
     path('urls/index/', views.URLListView.as_view()),
