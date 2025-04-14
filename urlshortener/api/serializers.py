@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from urlshortener.links.models import URL
+from links.models import URL
 
 
 class URLSerializer(serializers.ModelSerializer):
