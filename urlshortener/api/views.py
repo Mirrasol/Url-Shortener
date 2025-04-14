@@ -1,4 +1,4 @@
-from api.serializers import URLSerializer, UsersSerializer
+from api.serializers import URLListSerializer, URLShortenSerializer, UsersSerializer
 from django.contrib.auth import get_user_model
 from links.models import URL
 from rest_framework import generics
@@ -9,7 +9,7 @@ class URLListView(generics.ListAPIView):
     """
     Get a list of shortened URLs, saved by current user.
     """
-    serializer_class = URLSerializer
+    serializer_class = URLListSerializer
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
@@ -22,7 +22,7 @@ class URLCreateView(generics.CreateAPIView):
     Create a new short URL.
     """
     queryset = URL.objects.all()
-    serializer_class = URLSerializer
+    serializer_class = URLShortenSerializer
     permission_classes = [IsAuthenticated]
 
 
