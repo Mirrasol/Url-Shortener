@@ -29,7 +29,6 @@ def create_short_url(request):
     return redirect(reverse_lazy('shorten_url'))
 
 
-@login_required
 def redirect_to_shortened(request, hash):
     """
     Redirect to a URL using short version,
