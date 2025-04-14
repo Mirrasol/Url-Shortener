@@ -1,8 +1,7 @@
-from rest_framework import generics
-from rest_framework.permissions import IsAuthenticated
-
 from api.serializers import URLSerializer
 from links.models import URL
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
 
 
 class URLListView(generics.ListAPIView):
