@@ -19,7 +19,6 @@ from django.urls import include, path
 
 # from urlshortener.views import homepage
 from urlshortener.api.routers import router
-from urlshortener.api import router
 from urlshortener.views import CustomLoginView, CustomLogoutView, CustomUserCreateView, Homepage
 
 urlpatterns = [
