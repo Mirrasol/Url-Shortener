@@ -11,8 +11,12 @@
     <input class="btn" style="background-color: #a07add; color: white" type="submit" value="Submit">
 </form>
 
+{% if url.hash %}
+
 <div class="container my-5 pt-4 border-top">
     <h3>Your latest shortened URL:</h3>
     <a href="{% url 'redirect_url' url.hash %}" target="_blank">{{ url.hash }}</a>
 </div>
+
+{% endif %}
 {% endblock %}
