@@ -20,7 +20,8 @@ class URLShortenSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = URL
-        fields = ['url', 'user']
+        fields = ['url', 'hash', 'user']
+        read_only_fields = ['hash']
 
 
 class UsersSerializer(serializers.ModelSerializer):
