@@ -13,15 +13,51 @@ class URLsTestCase(TestCase):
         self.url1 = URL.objects.get(pk=1)
         self.url2 = URL.objects.get(pk=2)
         self.url3 = URL.objects.get(pk=3)
+    
+    def test_create_user_successful(self):
+        new_user = {
+            "username": "Devonian",
+            "password1": "paleozoic04",
+            "password2": "paleozoic04",
+        }
 
-    def test_read_unauthenticated(self):
+        self.client.logout()
+
+        response = self.client.get(reverse_lazy('sign_up'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'sign_up.html')
+
+        response = self.client.post(reverse_lazy('sign_up'), new_user)
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse_lazy('login'))
+        self.assertTrue(get_user_model().objects.filter(username='Devonian').exists())
+        self.assertEqual(get_user_model().objects.get(id=4).username, 'Devonian')
+
+    def test_create_user_username_taken(self):
+        new_user = {
+            "username": "Ordovician",
+            "password1": "paleozoic048",
+            "password2": "paleozoic048",
+        }
+
+        self.client.logout()
+
+        response = self.client.get(reverse_lazy('sign_up'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'sign_up.html')
+
+        response = self.client.post(reverse_lazy('sign_up'), new_user)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.context['form'].errors['username'], ['A user with that username already exists.'])
+
+    def test_read_url_list_unauthenticated(self):
         self.client.logout()
 
         response = self.client.get(reverse_lazy('urls_list'))
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, '/login/?next=/urls/index/')
 
-    def test_read_authenticated(self):
+    def test_read_url_list_authenticated(self):
         self.client.force_login(self.user)
 
         response = self.client.get(reverse_lazy('urls_list'))
@@ -30,14 +66,14 @@ class URLsTestCase(TestCase):
         self.assertTrue(response.context['urls'].contains(self.url1))
         self.assertFalse(response.context['urls'].contains(self.url3))
 
-    def test_create_unauthenticated(self):
+    def test_create_url_unauthenticated(self):
         self.client.logout()
 
         response = self.client.get(reverse_lazy('shorten_url'))
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, '/login/?next=/urls/shorten_url/')
 
-    def test_create_authenticated(self):
+    def test_create_url_authenticated(self):
         new_url = {
             "url": "https://www.larian.com/",
             "hash": "42874e422",
