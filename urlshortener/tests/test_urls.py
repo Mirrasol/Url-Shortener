@@ -55,3 +55,23 @@ class URLsTestCase(TestCase):
         response = self.client.post(reverse_lazy('shorten_url'), new_url)
         self.assertEqual(response.status_code, 302)
         self.assertEqual(URL.objects.get(id=5).url, 'https://www.larian.com/')
+    
+    def test_redirect_to_shortened_unauthenticated(self):
+        url = "https://www.example.com/"
+        hash = "423274e422"
+
+        self.client.logout()
+
+        response = self.client.get(reverse_lazy('redirect_url', kwargs={'hash': hash}))
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, url, fetch_redirect_response=False)
+    
+    def test_redirect_to_shortened_authenticated(self):
+        url = "https://www.example.com/"
+        hash = "423274e422"
+
+        self.client.force_login(self.user)
+
+        response = self.client.get(reverse_lazy('redirect_url', kwargs={'hash': hash}))
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, url, fetch_redirect_response=False)
