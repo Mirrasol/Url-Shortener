@@ -1,7 +1,7 @@
-from django.test import TestCase, Client
 from django.contrib.auth import get_user_model
-from links.models import URL
+from django.test import Client, TestCase
 from django.urls import reverse_lazy
+from links.models import URL
 
 
 class URLsTestCase(TestCase):

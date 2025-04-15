@@ -1,8 +1,8 @@
 from django.contrib.auth import get_user_model
-from links.models import URL
 from django.urls import reverse_lazy
+from links.models import URL
 from rest_framework import status
-from rest_framework.test import APITestCase, APIClient
+from rest_framework.test import APIClient, APITestCase
 
 
 class APITestCase(APITestCase):
