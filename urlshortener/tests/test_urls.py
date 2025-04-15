@@ -27,6 +27,8 @@ class URLsTestCase(TestCase):
         response = self.client.get(reverse_lazy('urls_list'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'links/urls_list.html')
+        self.assertTrue(response.context['urls'].contains(self.url1))
+        self.assertFalse(response.context['urls'].contains(self.url3))
 
     def test_create_unauthenticated(self):
         self.client.logout()
