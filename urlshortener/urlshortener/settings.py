@@ -136,6 +136,9 @@ LOGIN_REDIRECT_URL = 'homepage'
 LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = 'homepage'
 
+FIXTURE_DIRS = [
+    'urlshortener/tests/fixtures',
+]
 
 # DRF specific settings.
 
