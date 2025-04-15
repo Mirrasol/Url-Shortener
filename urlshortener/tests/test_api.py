@@ -14,15 +14,29 @@ class APITestCase(APITestCase):
         self.url1 = URL.objects.get(pk=1)
         self.url2 = URL.objects.get(pk=2)
         self.url3 = URL.objects.get(pk=3)
+
+    def test_read_users_list_unauthenticated(self):
+        self.client.logout()
+
+        url = reverse_lazy('api_users_list')
+        response = self.client.get(url, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_read_users_list_authenticated(self):
+        self.client.force_login(self.user)
+
+        url = reverse_lazy('api_users_list')
+        response = self.client.get(url, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
     
-    def test_read_unauthenticated(self):
+    def test_read_url_list_unauthenticated(self):
         self.client.logout()
         
         url = reverse_lazy('api_urls_list')
         response = self.client.get(url, format='json')
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
     
-    def test_read_authenticated(self):
+    def test_read_url_list_authenticated(self):
         self.client.force_login(self.user)
         
         url = reverse_lazy('api_urls_list')
@@ -45,6 +59,8 @@ class APITestCase(APITestCase):
         url = reverse_lazy('api_shorten_url')
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertTrue(response.data, "hash" in response.data)
+        self.assertEqual(URL.objects.get(pk=5).url, data['url'])
     
     def test_create_invalid_url(self):
         self.client.force_login(self.user)
