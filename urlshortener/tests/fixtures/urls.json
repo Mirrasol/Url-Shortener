@@ -1,0 +1,46 @@
+[
+    {
+      "model": "links.URL",
+      "pk": 1,
+      "fields": {
+        "url": "https://www.google.com/",
+        "hash": "8ba325",
+        "visits_count": 10,
+        "created_at": "2024-09-12 00:01:01.000001+03",
+        "user_id": 1
+      }
+    },
+    {
+      "model": "links.URL",
+      "pk": 2,
+      "fields": {
+        "url": "https://www.example.com/",
+        "hash": "423274e422",
+        "visits_count": 0,
+        "created_at": "2024-09-12 00:02:02.000001+03",
+        "user_id": 1
+      }
+    },
+    {
+      "model": "links.URL",
+      "pk": 3,
+      "fields": {
+        "url": "https://www.github.com/",
+        "hash": "0d490",
+        "visits_count": 6,
+        "created_at": "2024-09-12 00:03:03.000001+03",
+        "user_id": 2
+      }
+    },
+    {
+      "model": "links.URL",
+      "pk": 4,
+      "fields": {
+        "url": "https://leetcode.com/",
+        "hash": "834ff636f",
+        "visits_count": 8,
+        "created_at": "2024-09-12 00:05:05.000001+03",
+        "user_id": 3
+      }
+    }
+  ]
