@@ -7,6 +7,9 @@ User = get_user_model()
 
 
 class URL(models.Model):
+    """
+    A custom model for URLs.
+    """
     url = models.URLField(verbose_name='URL')
     hash = models.CharField(max_length=20)
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='User', related_name='urls')
