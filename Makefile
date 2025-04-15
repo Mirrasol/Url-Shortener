@@ -12,3 +12,6 @@ lint:
 
 lint-fix:
 	uv run ruff check urlshortener --fix
+
+tests:
+	uv run python urlshortener/manage.py test tests
