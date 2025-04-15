@@ -6,7 +6,7 @@ from django.urls import path
 # router = routers.DefaultRouter()
 
 urlpatterns = [
-    path('urls/index/', views.URLListView.as_view()),
-    path('urls/shorten_url/', views.URLCreateView.as_view()),
-    path('users/', views.UsersListView.as_view()),
+    path('urls/index/', views.URLListView.as_view(), name='api_urls_list'),
+    path('urls/shorten_url/', views.URLCreateView.as_view(), name='api_shorten_url'),
+    path('users/', views.UsersListView.as_view(), name='api_users_list'),
 ]
