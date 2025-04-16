@@ -8,6 +8,7 @@ from urls.models import URL
 class URLListView(generics.ListAPIView):
     """
     Get a list of shortened URLs, saved by current user.
+    Registered users only.
     """
     serializer_class = URLListSerializer
     permission_classes = [IsAuthenticated]
@@ -20,6 +21,7 @@ class URLListView(generics.ListAPIView):
 class URLCreateView(generics.CreateAPIView):
     """
     Create a new short URL.
+    Registered users only.
     """
     queryset = URL.objects.all()
     serializer_class = URLShortenSerializer
@@ -29,6 +31,7 @@ class URLCreateView(generics.CreateAPIView):
 class UsersListView(generics.ListAPIView):
     """
     Get a list of all registered users.
+    Available to all users.
     """
     user = get_user_model()
     queryset = user.objects.all()

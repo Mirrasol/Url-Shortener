@@ -7,12 +7,6 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, TemplateView
 
-# def homepage(request):
-#     return render(
-#         request=request,
-#         template_name='homepage.html',
-#     )
-
 
 class Homepage(TemplateView):
     template_name = 'homepage.html'
