@@ -1,5 +1,5 @@
 from django.urls import path
-from links import views
+from urls import views
 
 urlpatterns = [
     path('shorten_url/', views.create_short_url, name='shorten_url'),

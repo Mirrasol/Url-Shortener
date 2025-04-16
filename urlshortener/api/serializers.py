@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
-from links.models import URL
 from rest_framework import serializers
+from urls.models import URL
 
 
 class URLListSerializer(serializers.ModelSerializer):

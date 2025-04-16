@@ -1,6 +1,6 @@
 [
     {
-      "model": "links.URL",
+      "model": "urls.URL",
       "pk": 1,
       "fields": {
         "url": "https://www.google.com/",
@@ -11,7 +11,7 @@
       }
     },
     {
-      "model": "links.URL",
+      "model": "urls.URL",
       "pk": 2,
       "fields": {
         "url": "https://www.example.com/",
@@ -22,7 +22,7 @@
       }
     },
     {
-      "model": "links.URL",
+      "model": "urls.URL",
       "pk": 3,
       "fields": {
         "url": "https://www.github.com/",
@@ -33,7 +33,7 @@
       }
     },
     {
-      "model": "links.URL",
+      "model": "urls.URL",
       "pk": 4,
       "fields": {
         "url": "https://leetcode.com/",

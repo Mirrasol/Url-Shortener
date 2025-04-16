@@ -14,7 +14,7 @@ def create_short_url(request):
     if request.method == 'GET':
         return render(
             request=request,
-            template_name='links/shortener.html',
+            template_name='urls/shortener.html',
             context={'form': URLForm(), 'url': request.user.urls.last()},
         )
     elif request.method == 'POST':
@@ -48,6 +48,6 @@ def get_urls_list(request):
     urls = request.user.urls.all()
     return render(
         request=request,
-        template_name='links/urls_list.html',
+        template_name='urls/urls_list.html',
         context={'urls': urls},
     )

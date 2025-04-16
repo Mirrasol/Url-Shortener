@@ -1,8 +1,8 @@
 from api.serializers import URLListSerializer, URLShortenSerializer, UsersSerializer
 from django.contrib.auth import get_user_model
-from links.models import URL
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
+from urls.models import URL
 
 
 class URLListView(generics.ListAPIView):

@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.test import Client, TestCase
 from django.urls import reverse_lazy
-from links.models import URL
+from urls.models import URL
 
 
 class URLsTestCase(TestCase):
@@ -62,7 +62,7 @@ class URLsTestCase(TestCase):
 
         response = self.client.get(reverse_lazy('urls_list'))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'links/urls_list.html')
+        self.assertTemplateUsed(response, 'urls/urls_list.html')
         self.assertTrue(response.context['urls'].contains(self.url1))
         self.assertFalse(response.context['urls'].contains(self.url3))
 
@@ -86,7 +86,7 @@ class URLsTestCase(TestCase):
 
         response = self.client.get(reverse_lazy('shorten_url'))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'links/shortener.html')
+        self.assertTemplateUsed(response, 'urls/shortener.html')
 
         response = self.client.post(reverse_lazy('shorten_url'), new_url)
         self.assertEqual(response.status_code, 302)
