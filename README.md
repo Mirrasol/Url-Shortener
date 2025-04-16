@@ -11,7 +11,7 @@ Built with Django and Django REST Framework, PostgreSQL, designed with Bootstrap
 
   - register and login to shorten a URL and save it for future usage;
   - check the list of your previously saved URLS;
-  - connect to the API with GET/POST requests to check the reqistered users, your saved URLs or to get a new shortened URL.
+  - connect to the API with GET/POST requests to check the registered users, your saved URLs or to get a new shortened URL.
 
 ## Installation
 
@@ -45,7 +45,7 @@ or check Makefile for the rest of the available commands.
 
 -  Registering new user:
 
-![](/img/2.sign_up.png.png)
+![](/img/2.sign_up.png)
 
 -  Login afterwards:
 
