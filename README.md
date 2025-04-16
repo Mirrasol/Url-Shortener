@@ -1,5 +1,7 @@
 
-Url-Shortener - an easy-to-use web-service to create short and convenient links for display in apps and chats. 
+# Url-Shortener
+
+An easy-to-use web-service to create short and convenient links for display in apps and chats. 
 
 Provides both a browsable webpage and a REST API for external projects' integration.
 
