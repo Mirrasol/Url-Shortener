@@ -1,0 +1,49 @@
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_HOST: ${DATABASE_HOST}
+      PGDATA: /var/lib/postgresql/data/urlshortener/pgdata
+    ports:
+      - 5432:5432
+    volumes:
+      - db-data:/var/lib/postgresql/data/urlshortener/pgdata
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d $$DATABASE_NAME -U $$DATABASE_USER"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 2G
+
+  web:
+    build: .
+    container_name: urls_django-docker
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    environment:
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+      DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS}
+      DJANGO_DATABASE_NAME: ${DJANGO_DATABASE_NAME}
+      DJANGO_DATABASE_USER: ${DJANGO_DATABASE_USER}
+      DJANGO_DATABASE_PASSWORD: ${DJANGO_DATABASE_PASSWORD}
+      DJANGO_DATABASE_HOST: ${DJANGO_DATABASE_HOST}
+      DJANGO_DATABASE_PORT: ${DJANGO_DATABASE_PORT}
+      DJANGO_DEBUG: ${DJANGO_DEBUG}
+    env_file:
+      - .env
+
+volumes:
+  db-data:
