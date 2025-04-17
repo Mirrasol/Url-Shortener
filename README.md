@@ -7,23 +7,25 @@ Provides both a browsable webpage and a REST API for external projects' integrat
 
 Built with Django and Django REST Framework, PostgreSQL, designed with Bootstrap5.
 
+
 ## Features
 
   - register and login to shorten a URL and save it for future usage;
   - check the list of your previously saved URLS;
   - connect to the API with GET/POST requests to check the registered users, your saved URLs or to get a new shortened URL.
 
+
 ## Installation
 
-This project is built using Django and DRF as the main frameworks. Please refer to the pyproject.toml file for the full list of required dependencies.
+This project is built using Django and DRF as the main frameworks. Please refer to the requirements.txt for the full list of required dependencies.
 
 1) Download the package from GitHub:
 
 `git clone git@github.com:Mirrasol/Url-Shortener.git`
 
-2) Install using uv from your console:
+2) Set up the project with Docker:
 
-`make install`
+`docker compose up --build`
 
 or set your own virtual environment using pip and other package managers.
 
@@ -35,7 +37,6 @@ Use .env_example for reference.
 
 `python urlshortener/manage.py runserver`
 
-or check Makefile for the rest of the available commands.
 
 ## Demo Screens
 
